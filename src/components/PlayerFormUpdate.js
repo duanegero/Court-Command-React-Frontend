@@ -90,8 +90,9 @@ export default function PlayerFormUpdate(){
     return(    
         <form style={formStyle} onSubmit={submitPlayer}>
             <label style={lableStyle}>ID:
-            <input style={inputStyle} type="number" placeholder="ID" onChange={(e) => setId(e.target.value)}></input>
+            <input style={inputStyle} type="number" placeholder="ID" value={id} onChange={(e) => setId(e.target.value)}></input>
             </label>
+
             <label style={lableStyle}>Name:
             <input style={inputStyle} type="text" placeholder="First Name" value={name} onChange={(e) => setName(e.target.value)}></input>
             </label>
