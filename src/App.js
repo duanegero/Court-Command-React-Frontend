@@ -9,13 +9,14 @@ import UpdateCoach from './pages/UpdateCoach';
 import DeletePlayer from './pages/DeletePlayer';
 import DeleteCoach from './pages/DeleteCoach';
 import FindTeam from './pages/FindTeam';
+import Home from './pages/Home';
 
 function App() {
   return (
    <div>
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<div>Hello, World!</div>} />
+        <Route path='/' element={<Home />} />
         <Route path='find-player' element={<FindPlayer />} />
         <Route path='find-coach' element={<FindCoach />} />
         <Route path='add-player' element={<AddPlayer />} />
