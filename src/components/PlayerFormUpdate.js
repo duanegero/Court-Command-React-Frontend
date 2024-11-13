@@ -12,6 +12,8 @@ export default function PlayerFormUpdate(){
     const [age, setAge] = useState("");
     const [email, setEmail] = useState("");
     const [team, setTeam] = useState("");
+    const [submittedData, setSubmittedData] = useState(null)
+
 
     //creating new object with values from input fields
     const updatedPlayer = {
@@ -53,6 +55,7 @@ export default function PlayerFormUpdate(){
             const response = await axios.put(`${teamUrl}/${team}/${id}`, updatedPlayer);
             //logging response data
             console.log(response.data);
+            setSubmittedData(response.data);
         } catch(error){
             //alert user if error, log error
             alert("Can Not Update Player");
@@ -110,6 +113,7 @@ export default function PlayerFormUpdate(){
     
     //return to the app 
     return(    
+        <div>
         <form style={formStyle} onSubmit={submitPlayer}>
             <label style={lableStyle}>ID:
             <input style={inputStyle} type="number" placeholder="ID" value={id} onChange={(e) => setId(e.target.value)}></input>
@@ -137,5 +141,16 @@ export default function PlayerFormUpdate(){
             </label>
             <button type="submit">Submit</button>
         </form>
+        {submittedData && (
+            <div>
+                <h3>Player Updated</h3>
+                <p><strong>ID:</strong> {submittedData.id}</p>
+                <p><strong>Name:</strong> {submittedData.first_name}</p>
+                <p><strong>Age:</strong> {submittedData.age}</p>
+                <p><strong>Email:</strong> {submittedData.email}</p>
+                <p><strong>Team:</strong> {submittedData.team_name}</p>
+            </div>
+        )}
+        </div>
     )
 }

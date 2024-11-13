@@ -13,6 +13,7 @@ export default function CoachForm(){
     const [name, setName] = useState("");
     const [team, setTeam] = useState("");
     const [assistant, setAssistant] = useState("");
+    const [submittedData, setSubmittedData] = useState(null)
 
     //Creating an object with values from input fields
     const newCoach = {
@@ -46,6 +47,7 @@ export default function CoachForm(){
             const response = await axios.post(`${teamUrl}/coaches`, newCoach);
             //logging new coach info
             console.log('Coach Added', response.data);
+            setSubmittedData(response.data)
         } catch (error) {
             //alerting usering of error
             alert("Coach not created ")
@@ -93,7 +95,8 @@ export default function CoachForm(){
     }
     
     //return to app
-    return(    
+    return(  
+        <div>
         <form style={formStyle} onSubmit={submitCoach}>
             <label style={lableStyle}>Name:
             <input style={inputStyle} type="text" placeholder="First Name" value={name} onChange={(e) => setName(e.target.value)}></input>
@@ -108,5 +111,17 @@ export default function CoachForm(){
             </label>
             <button type="submit" style={buttonStyle} className={styles.button}>Submit</button>
         </form>
+        {submittedData && (
+            <div>
+                <h3>Coach Added</h3>
+                <p><strong>ID:</strong> {submittedData.id}</p>
+                <p><strong>Name:</strong> {submittedData.first_name}</p>
+                <p><strong>Team:</strong> {submittedData.team}</p>
+                <p><strong>Assistant:</strong> {submittedData.assistant_coach}</p>
+            </div>
+        )}
+
+        </div>
+        
     )
 }

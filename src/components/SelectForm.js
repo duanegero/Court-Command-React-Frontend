@@ -8,6 +8,7 @@ export default function SelectForm(){
 
     //variable to hold input values, start with an empty string
     const [team, setTeam] = useState("");
+    const [teamData, setTeamData] = useState([])
 
     //event listener for button click
     const submitTeam = async (event) => {
@@ -27,6 +28,7 @@ export default function SelectForm(){
 
             //log data returned from API
             console.log(response.data);
+            setTeamData(response.data)
         } catch(error){
             //alert if error, log error
             alert("Team not fond")
@@ -71,6 +73,7 @@ export default function SelectForm(){
     }
 
     return(
+        <div>
         <form style={formStyle} onSubmit={submitTeam}>
             <label style={lableStyle}>Team:
                 <select style={selectStyle} value=  {team} onChange={(e) => setTeam(e.target.value)}>
@@ -82,5 +85,31 @@ export default function SelectForm(){
             </label>
             <button type="submit">Submit</button>
         </form>
+
+        {teamData.length > 0 && (
+            <table style={{ margin: '20px auto', borderCollapse: 'collapse', width: '80%' }}>
+                <thead>
+                    <tr>
+                    <th style={{ border: '1px solid #ddd', padding: '8px' }}>Player ID</th>
+                    <th style={{ border: '1px solid #ddd', padding: '8px' }}>Name</th>
+                    <th style={{ border: '1px solid #ddd', padding: '8px' }}>Age</th>
+                    <th style={{ border: '1px solid #ddd', padding: '8px' }}>Email</th>
+                    <th style={{ border: '1px solid #ddd', padding: '8px' }}>Team</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {teamData.map((player, index) => (
+                        <tr key={index}>
+                            <td style={{ border: '1px solid #ddd', padding: '8px' }}>{player.id}</td>
+                            <td style={{ border: '1px solid #ddd', padding: '8px' }}>{player.first_name}</td>
+                            <td style={{ border: '1px solid #ddd', padding: '8px' }}>{player.age}</td>
+                            <td style={{ border: '1px solid #ddd', padding: '8px' }}>{player.email}</td>
+                            <td style={{ border: '1px solid #ddd', padding: '8px' }}>{player.team_name}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        )}
+        </div>
     )
 }

@@ -11,6 +11,7 @@ export default function CoachFormUpdate(){
     const [name, setName] = useState("");
     const [team, setTeam] = useState("");
     const [assistant, setAssistant] = useState("");
+    const [submittedData, setSubmittedData] = useState(null)
 
     //creating an boject with values from input fields
     const updatedCoach = {
@@ -48,6 +49,7 @@ export default function CoachFormUpdate(){
             const response = await axios.put(`${teamUrl}/coaches/${id}`, updatedCoach);
             //logging response data
             console.log(response.data)
+            setSubmittedData(response.data)
         }catch(error){
             //alert user and log if error 
             alert('Can Not Update Coach.');
@@ -96,7 +98,8 @@ export default function CoachFormUpdate(){
     }
     
     //return to app
-    return(    
+    return(   
+        <div>
         <form style={formStyle} onSubmit={submitCoach}>
             <label style={lableStyle}>ID:
             <input style={inputStyle} type="number" placeholder="ID" onChange={(e) => setId(e.target.value)}></input>
@@ -115,5 +118,15 @@ export default function CoachFormUpdate(){
             </label>
             <button type="submit" style={buttonStyle}>Submit</button>
         </form>
+        {submittedData && (
+            <div>
+                <h3>Coach Updated</h3>
+                <p><strong>ID:</strong> {submittedData.id}</p>
+                <p><strong>Name:</strong> {submittedData.first_name}</p>
+                <p><strong>Team:</strong> {submittedData.team}</p>
+                <p><strong>Assistant:</strong> {submittedData.assistant_coach}</p>
+            </div>
+        )}
+        </div>
     )
 }

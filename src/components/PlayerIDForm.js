@@ -9,6 +9,7 @@ export default function PlayerIDForm(){
     //variable to hold input values, start with an empty string
     const [id, setId] = useState("");
     const [team, setTeam] = useState("")
+    const [submittedData, setSubmittedData] = useState(null)
 
     //event listener for button click
     const PlayerFindId = async (event) => {
@@ -34,6 +35,7 @@ export default function PlayerIDForm(){
             const response = await axios.get(`${teamUrl}/${team}/${id}`);
             //if found log data
             console.log("Player Found", response.data);
+            setSubmittedData(response.data);
         }catch(error){
             //alert user if not found
             alert("Player Not Found.");
@@ -80,6 +82,7 @@ export default function PlayerIDForm(){
     }
 
     return(
+        <div>
         <form style={formStyle} onSubmit={PlayerFindId}>
              <label style={lableStyle}>Team:
                 <select style={selectStyle} value=  {team} onChange={(e) => setTeam(e.target.value)}>
@@ -94,5 +97,16 @@ export default function PlayerIDForm(){
             </label>
             <button type="submit">Submit</button>
         </form>
+        {submittedData && (
+            <div>
+                <h3>Player Profile</h3>
+                <p><strong>ID:</strong> {submittedData.id}</p>
+                <p><strong>Name:</strong> {submittedData.first_name}</p>
+                <p><strong>Age:</strong> {submittedData.age}</p>
+                <p><strong>Email:</strong> {submittedData.email}</p>
+                <p><strong>Team:</strong> {submittedData.team_name}</p>
+            </div>
+        )}
+        </div>
     )
 }

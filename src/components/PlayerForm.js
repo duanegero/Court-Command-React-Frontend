@@ -11,6 +11,8 @@ export default function PlayerForm(){
     const [age, setAge] = useState("");
     const [email, setEmail] = useState("");
     const [team, setTeam] = useState("");
+    const [submittedData, setSubmittedData] = useState(null)
+
 
     //event for submit button
     const submitPlayer = async (event) => {
@@ -47,6 +49,7 @@ export default function PlayerForm(){
             const response = await axios.post(`${teamUrl}/${team}`, newPlayer);
             //log new player 
             console.log("Player Added", response.data);
+            setSubmittedData(response.data);
         }catch(error){
             //alert user if error, log error
             alert("Player Not Added");
@@ -103,7 +106,8 @@ export default function PlayerForm(){
     }
     
     //return to the app 
-    return(    
+    return( 
+        <div>   
         <form style={formStyle} onSubmit={submitPlayer}>
             <label style={lableStyle}>Name:
             <input style={inputStyle} type="text" placeholder="First Name" value={name} onChange={(e) => setName(e.target.value)}></input>
@@ -127,6 +131,17 @@ export default function PlayerForm(){
             </label>
             <button type="submit">Submit</button>
         </form>
+        {submittedData && (
+            <div>
+                <h3>Player Added</h3>
+                <p><strong>ID:</strong> {submittedData.id}</p>
+                <p><strong>Name:</strong> {submittedData.first_name}</p>
+                <p><strong>Age:</strong> {submittedData.age}</p>
+                <p><strong>Email:</strong> {submittedData.email}</p>
+                <p><strong>Team:</strong> {submittedData.team_name}</p>
+            </div>
+        )}
+        </div>
     )
 }
 

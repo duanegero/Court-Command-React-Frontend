@@ -8,6 +8,7 @@ export default function IDForm(){
 
     //variable to hold input values, start with an empty string
     const [id, setId] = useState("");
+    const [submittedData, setSubmittedData] = useState(null)
 
     //event listener for button click
     const findId = async (event) => {
@@ -29,6 +30,7 @@ export default function IDForm(){
             const response = await axios.get(`${teamUrl}/coaches/${id}`);
             //if found log data
             console.log("Coach Found", response.data);
+            setSubmittedData(response.data)           
         }catch(error){
             //alert user if not found
             alert("Coach Not Found.");
@@ -64,11 +66,22 @@ export default function IDForm(){
     }
 
     return(
+        <div>
         <form style={formStyle} onSubmit={findId}>
             <label style={lableStyle}>ID:
                 <input style={inputStyle} type="number" placeholder="ID" value={id} onChange={(e) => setId(e.target.value)}></input>
             </label>
             <button type="submit">Submit</button>
         </form>
+        {submittedData && (
+            <div>
+                <h3>Coach Profile</h3>
+                <p><strong>ID:</strong> {submittedData.id}</p>
+                <p><strong>Name:</strong> {submittedData.first_name}</p>
+                <p><strong>Team:</strong> {submittedData.team}</p>
+                <p><strong>Assistant:</strong> {submittedData.assistant_coach}</p>
+            </div>
+        )}
+        </div>
     )
 }
