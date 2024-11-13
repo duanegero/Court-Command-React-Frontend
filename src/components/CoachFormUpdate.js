@@ -1,5 +1,7 @@
 import React from "react"; //importing react 
 import { useState } from "react"; //importind use State from react
+import axios from "axios"; //import axios to my API calls
+const teamUrl = 'http://localhost:3001'; //setting variable for root URL
 
 //creating a function that will export to app
 export default function CoachFormUpdate(){
@@ -10,8 +12,15 @@ export default function CoachFormUpdate(){
     const [team, setTeam] = useState("");
     const [assistant, setAssistant] = useState("");
 
+    //creating an boject with values from input fields
+    const updatedCoach = {
+        first_name: name,
+        team: team,
+        assistant_coach: assistant
+    }
+
     //event listener for button click
-    const submitCoach = (event) => {
+    const submitCoach = async (event) => {
         //prevents the page from just refreshing        
         event.preventDefault();
 
@@ -33,6 +42,17 @@ export default function CoachFormUpdate(){
             return;
         }
         
+        //starting try catch
+        try{
+            //sending a put request with axios, and object
+            const response = await axios.put(`${teamUrl}/coaches/${id}`, updatedCoach);
+            //logging response data
+            console.log(response.data)
+        }catch(error){
+            //alert user and log if error 
+            alert('Can Not Update Coach.');
+            console.log(error)
+        }
 
         //log for testing
         console.log({id, name, team, assistant});

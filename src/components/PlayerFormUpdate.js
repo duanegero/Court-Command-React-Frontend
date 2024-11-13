@@ -1,5 +1,7 @@
 import React from "react"; //importing react to use in file
 import { useState } from "react"; //importind use State from react
+import axios from "axios"; //import axios to my API calls
+const teamUrl = 'http://localhost:3001'; //setting variable for root URL
 
 //function to export to app
 export default function PlayerFormUpdate(){
@@ -11,8 +13,16 @@ export default function PlayerFormUpdate(){
     const [email, setEmail] = useState("");
     const [team, setTeam] = useState("");
 
+    //creating new object with values from input fields
+    const updatedPlayer = {
+        first_name: name,
+        age: age,
+        email: email,
+        team_name: team
+    }
+
     //event for submit button
-    const submitPlayer = (event) => {
+    const submitPlayer = async (event) => {
         event.preventDefault();
 
         //alert if all input fields aren't filled
@@ -35,6 +45,18 @@ export default function PlayerFormUpdate(){
         if(!team){
             alert("Please Select a Team");
             return;
+        }
+
+        //starting try catch
+        try{
+            //sending a put request with new object, axios
+            const response = await axios.put(`${teamUrl}/${team}/${id}`, updatedPlayer);
+            //logging response data
+            console.log(response.data);
+        } catch(error){
+            //alert user if error, log error
+            alert("Can Not Update Player");
+            console.log(error)
         }
 
         //logging for testing
