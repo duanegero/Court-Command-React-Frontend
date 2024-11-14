@@ -13,9 +13,11 @@ This React frontend app will all you to interact with a backend API to manage an
 
 1. Clone Repository:<br>
    `https://github.com/duanegero/Court-Command-React-Frontend.git`
-   In the project directory, you can run:
-
-### `npm start`
+2. Navigate to the Project Directory<br>
+3. Install Dependencies:<br>
+   `npm install`
+4. Start the Development Server<br>
+   `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
