@@ -18,9 +18,12 @@ This React frontend app will all you to interact with a backend API to manage an
    `npm install`
 4. Start the Development Server<br>
    `npm start`
+   Will open[http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Backend
+
+[Basketball-Roster-Coach-API](https://github.com/duanegero/Basketball-Roster-Coach-API.git)<br>
+Ensure the backend API server is running and configured to allow requests from the frontend.<br>
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
