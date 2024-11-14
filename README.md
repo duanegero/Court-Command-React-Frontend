@@ -1,6 +1,6 @@
 # Court Command
 
-This React frontend app will all you to interact with a backend API to manage and display data.
+This React frontend app will allow you to interact with a backend API to manage and display data.
 
 ## Table of contents
 
@@ -18,7 +18,7 @@ This React frontend app will all you to interact with a backend API to manage an
    `npm install`
 4. Start the Development Server<br>
    `npm start`
-   Will open[http://localhost:3000](http://localhost:3000) to view it in your browser.
+   [http://localhost:3000](http://localhost:3000) Will open in the browser.
 
 ## Backend
 
