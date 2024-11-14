@@ -11,7 +11,6 @@ export default function Home(){
 
     const paraStyle = {
         textAlign: 'center',
-        // paddingTop: '10px',
         lineHeight: '1.5',
         margin: '10px 120px 10px 120px',
     }

@@ -1,10 +1,19 @@
-# Getting Started with Create React App
+# Court Command
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This React frontend app will all you to interact with a backend API to manage and display data.
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Installation](#installation)
+- [Backend Repository](#backend)
+- [Usage](#usage)
+- [License](#license)
+
+## Installation
+
+1. Clone Repository:<br>
+   `https://github.com/duanegero/Court-Command-React-Frontend.git`
+   In the project directory, you can run:
 
 ### `npm start`
 
