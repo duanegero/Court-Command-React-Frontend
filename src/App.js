@@ -9,6 +9,7 @@ import UpdateCoach from './pages/UpdateCoach';
 import DeletePlayer from './pages/DeletePlayer';
 import DeleteCoach from './pages/DeleteCoach';
 import FindTeam from './pages/FindTeam';
+import AllCoaches from './pages/AllCoaches';
 import Home from './pages/Home';
 
 function App() {
@@ -25,8 +26,8 @@ function App() {
         <Route path='update-coach' element={<UpdateCoach />} />
         <Route path='delete-player' element={<DeletePlayer />} />
         <Route path='delete-coach' element={<DeleteCoach />} />
-        <Route path='find-team' element={<FindTeam/>} />
-
+        <Route path='find-team' element={<FindTeam />} />
+        <Route path='all-coaches' element={<AllCoaches />} />
       </Routes>
     </BrowserRouter>
    </div>

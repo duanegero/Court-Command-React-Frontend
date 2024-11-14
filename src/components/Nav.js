@@ -14,6 +14,7 @@ export default function Nav(){
             <Link to="/delete-player">Delete Player</Link>
             <Link to="/delete-coach">Delete Coach</Link>
             <Link to="/find-team">Find Team</Link>
+            <Link to="/all-coaches">All Coaches</Link>
         </nav>
     )
 }

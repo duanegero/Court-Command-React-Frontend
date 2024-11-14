@@ -28,7 +28,7 @@ export default function SelectForm(){
 
             //log data returned from API
             console.log(response.data);
-            setTeamData(response.data)
+            setTeamData(response.data);
         } catch(error){
             //alert if error, log error
             alert("Team not fond")
