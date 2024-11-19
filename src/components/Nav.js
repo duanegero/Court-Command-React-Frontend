@@ -5,6 +5,7 @@ import styles from '../CSS modules/Nav.module.css'
 export default function Nav(){
     return(
         <nav className={styles.nav}>
+            <Link to="/">Home</Link>
             <Link to="/find-player">Find Player</Link>
             <Link to="/find-coach">Find Coach</Link>
             <Link to="/add-player">Add Player</Link>
