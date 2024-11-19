@@ -21,9 +21,6 @@ export default function IDForm(){
             return;
         }
 
-        //log for testing
-        console.log({id})
-
         //start try catch
         try{
             //send get request with axios and log response in variable

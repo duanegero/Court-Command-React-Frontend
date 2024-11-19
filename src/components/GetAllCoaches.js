@@ -5,17 +5,24 @@ const teamUrl = 'http://localhost:3001'; //setting variable for root URL
 
 export default function GetAllCoaches(){
 
+    //setting variable to handle returned data
     const [allCoaches, setAllCoaches] = useState([])
 
+    //async function
     const findCoaches = async (event) => {
-        event.preventDefault();
+        event.preventDefault(); 
 
+        //start try catch
         try{
+            //sending a GET request 
             const response = await axios.get(`${teamUrl}/coaches`)
 
+            //logging returned data
             console.log(response.data);
+            //assigning response to variable
             setAllCoaches(response.data);
         } catch(error) {
+            //catch if any errors alret and log
             alert("Can Not Find Coaches")
             console.log("Error", error)
         }

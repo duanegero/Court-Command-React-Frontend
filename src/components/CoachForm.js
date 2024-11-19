@@ -1,7 +1,5 @@
 import React from "react"; //importing react 
-
 import { useState } from "react"; //importind use State from react
-
 import styles from "../CSS modules/Button.module.css" //import style for button
 import axios from "axios"; //import axios to my API calls
 const teamUrl = 'http://localhost:3001'; //setting variable for root URL
@@ -120,8 +118,6 @@ export default function CoachForm(){
                 <p><strong>Assistant:</strong> {submittedData.assistant_coach}</p>
             </div>
         )}
-
         </div>
-        
     )
 }

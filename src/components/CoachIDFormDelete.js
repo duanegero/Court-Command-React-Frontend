@@ -20,9 +20,6 @@ export default function CoachIDFormDelete(){
             return;
         }
 
-        //log for testing
-        console.log({id})
-
         //start try catch
         try{
             //send a get request to make sure coach is there
